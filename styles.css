@@ -1,0 +1,458 @@
+/* Reset some default styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Hero Section - Rotating Background Images */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    animation: backgroundChange 40s infinite linear;
+}
+
+@keyframes backgroundChange {
+    0% { background-image: url('images/img_1.jpg'); }
+    25% { background-image: url('images/img_2.jpg'); }
+    50% { background-image: url('images/img_3.jpg'); }
+    75% { background-image: url('images/img_4.jpg'); }
+    100% { background-image: url('images/img_1.jpg'); }
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Animations for Hero Content */
+.animate-fade { animation: fadeIn 2s ease-in-out; }
+.animate-slide { animation: slideUp 2s ease-in-out; }
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Navbar Styles */
+.navbar {
+    background: rgba(54, 53, 53, 0.8);
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.navbar-brand img {
+    width: 60px;
+}
+
+.navbar-nav {
+    flex-wrap: wrap;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+    padding: 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #f39c12 !important;
+}
+
+/* About Section */
+#about {
+    background: #f9f9f9;
+    padding: 50px 0;
+}
+
+
+
+.product-filters-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    padding: 10px 10px 0 10px;
+    text-align: center; /* Added to center on desktop */
+  }
+  
+  .product-filters {
+    display: inline-flex; /* بدل flex العادي */
+    gap: 10px;
+    min-width: max-content;
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .product-filters {
+      display: flex; /* على الموبايل ترجع flex عادي */
+      justify-content: flex-start;
+    }
+  }
+  
+
+.filter-btn {
+    padding: 10px 20px;
+    background-color: #00497a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #0075c0;
+}
+.gallery .col-md-4 {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.product-image {
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.05) contrast(1.1);
+}
+
+/* Contact Section */
+#contact {
+    background: #f9f9f9;
+    padding: 50px 0;
+}
+
+#contactForm {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contactForm button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+#contactForm button:hover {
+    background: #f39c12;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 20px 0;
+}
+
+footer a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: auto;
+    text-align: left;
+}
+
+.about-content h3 {
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.about-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-content ul li {
+    padding: 5px 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.ceo-info {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+#quote {
+    background: url('images/about-bg.jpg') no-repeat center center/cover;
+    padding: 50px 0;
+}
+
+#quote h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#quote form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#quote input, #quote select, #quote textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#quote button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+#quote button:hover {
+    background: #f39c12;
+}
+
+.about-section {
+    background: #f9f9f9;
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #222;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.about-card {
+    background: #fff;
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
+    border-left: 5px solid #8b2404;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.styled-list li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Headings Styling */
+section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: block;
+    color: #0a0a0a;
+}
+
+section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: #8b2404;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* ========== ✅ RESPONSIVENESS FIXES ONLY ========== */
+@media (max-width: 768px) {
+    .hero-content {
+        font-size: 1rem;
+        padding: 15px;
+        width: 90%;
+    }
+
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+    }
+
+    .filter-btn-group .filter-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+    }
+
+    #contactForm {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content {
+        font-size: 0.9rem;
+    }
+
+    .filter-btn-group .filter-btn {
+        font-size: 13px;
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+    }
+
+    .navbar-nav {
+        gap: 5px;
+    }
+}
+.projects-gallery {
+    margin-top: 30px;
+  }
+  
+  .portfolio-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  
+  .portfolio-wrap:hover {
+    transform: scale(1.03);
+  }
+  
+  .portfolio-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .portfolio-info {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+  #projects .section-title p {
+    font-size: 16px; /* أو 15px لو حابب تصغر أكتر */
+    color: #555; /* لون هادي */
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+    
