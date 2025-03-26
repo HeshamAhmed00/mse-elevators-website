@@ -13,15 +13,25 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
         escalators: [
             "images/escalator1.jpg",
-            "images/escalator2.jpg"
+            "images/escalator2.jpg",
+            "images/img_4.jpg"
         ],
         photos: [
             "images/photo1.jpg",
-            "images/photo2.jpg"
+            "images/photo2.jpg",
+            "images/photo3.jpg",
+            "images/photo4.jpg",
+             "images/photo5.jpg",
+             "images/photo6.jpg"
         ],
         doors: [
             "images/door1.jpg",
-            "images/door2.jpg"
+            "images/door2.jpg",
+            "images/door3.jpg",
+            "images/door4.png",
+            "images/door5.jpg"
+
+        
         ]
     };
 
@@ -78,4 +88,36 @@ document.addEventListener("DOMContentLoaded", function () {
     if (allButton) {
         allButton.classList.add("active");
     }
+    
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".background-image");
+    let currentIndex = 0;
+
+    function changeBackground() {
+        images.forEach((img, index) => {
+            img.classList.remove("active");
+        });
+
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add("active");
+    }
+
+    setInterval(changeBackground, 5000); 
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const langToggle = document.getElementById("lang-toggle");
+
+    const currentPage = window.location.pathname;
+    const isArabic = currentPage.includes("-ar");
+
+    langToggle.textContent = isArabic ? "English" : "العربية";
+
+    langToggle.addEventListener("click", function () {
+        const newPage = isArabic ? "index.html" : "index-ar.html";
+        window.location.href = newPage;
+    });
+});
+
+

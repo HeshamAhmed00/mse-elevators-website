@@ -7,24 +7,33 @@ body, html {
     overflow-x: hidden;
 }
 
-/* Hero Section - Rotating Background Images */
+/* Hero Section */
 .hero {
     position: relative;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
+}
+
+/* Background Images - Hidden by default except for the active one */
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
-    animation: backgroundChange 40s infinite linear;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
 }
 
-@keyframes backgroundChange {
-    0% { background-image: url('images/img_1.jpg'); }
-    25% { background-image: url('images/img_2.jpg'); }
-    50% { background-image: url('images/img_3.jpg'); }
-    75% { background-image: url('images/img_4.jpg'); }
-    100% { background-image: url('images/img_1.jpg'); }
+/* Active Image - Fully Visible */
+.background-image.active {
+    opacity: 1;
 }
 
+/* Overlay */
 .overlay {
     position: absolute;
     top: 0;
@@ -34,6 +43,7 @@ body, html {
     background: rgba(0, 0, 0, 0.5);
 }
 
+/* Hero Content */
 .hero-content {
     position: absolute;
     top: 50%;
@@ -49,7 +59,7 @@ body, html {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* Animations for Hero Content */
+/* Animations */
 .animate-fade { animation: fadeIn 2s ease-in-out; }
 .animate-slide { animation: slideUp 2s ease-in-out; }
 
@@ -73,7 +83,10 @@ body, html {
 
 .navbar-brand img {
     width: 60px;
+ 
+
 }
+
 
 .navbar-nav {
     flex-wrap: wrap;
@@ -108,7 +121,7 @@ body, html {
   }
   
   .product-filters {
-    display: inline-flex; /* بدل flex العادي */
+    display: inline-flex; 
     gap: 10px;
     min-width: max-content;
     justify-content: center;
@@ -116,7 +129,7 @@ body, html {
   
   @media (max-width: 768px) {
     .product-filters {
-      display: flex; /* على الموبايل ترجع flex عادي */
+      display: flex; 
       justify-content: flex-start;
     }
   }
@@ -157,6 +170,34 @@ body, html {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     filter: brightness(1.05) contrast(1.1);
 }
+.gallery img {
+    width: 100%; /* Ensures responsiveness */
+    height: 250px; /* Set a fixed height */
+    object-fit: cover; /* Crop images to fit while maintaining aspect ratio */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .gallery img {
+        height: 200px; /* Adjust height for smaller screens */
+    }
+}
+
+.product-image {
+    border-radius: 8px;
+    width: 100%;
+    height: 250px; /* Matches gallery images */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.05) contrast(1.1);
+}
+
 
 /* Contact Section */
 #contact {
@@ -164,9 +205,17 @@ body, html {
     padding: 50px 0;
 }
 
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 #contactForm {
+    flex: 1;
     max-width: 500px;
-    margin: 0 auto;
     padding: 20px;
     background: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
@@ -195,6 +244,27 @@ body, html {
 #contactForm button:hover {
     background: #f39c12;
 }
+
+.map {
+    flex: 1;
+    max-width: 500px;
+    height: 400px;
+}
+
+.map iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+}
+
 
 /* Footer */
 footer {
@@ -418,41 +488,54 @@ section h2::after {
     }
 }
 .projects-gallery {
-    margin-top: 30px;
-  }
-  
-  .portfolio-wrap {
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    justify-content: center; /* Center items */
+    padding-top: 20px;
+}
+
+.portfolio-item {
+    width: calc(33.333% - 20px); /* Three items per row */
+    min-width: 300px;
+    box-sizing: border-box;
+}
+
+.portfolio-wrap {
+    background: white;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
-  }
-  
-  .portfolio-wrap:hover {
-    transform: scale(1.03);
-  }
-  
-  .portfolio-wrap img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .portfolio-info {
+    padding: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-images {
+    display: flex;
+    gap: 5px; /* Space between the two images */
+}
+
+.portfolio-images img {
+    width: 50%; /* Each image takes half the width */
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-wrap:hover {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+.portfolio-info {
     background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 15px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    color: white;
+    padding: 10px;
     text-align: center;
-  }
-  #projects .section-title p {
-    font-size: 16px; /* أو 15px لو حابب تصغر أكتر */
-    color: #555; /* لون هادي */
-    line-height: 1.6;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+#projects .section-title p {
+    font-size: 14px; /* Reduced font size */
+    color: #555;
+    line-height: 1.5;
     max-width: 700px;
     margin: 0 auto;
-  }
-    
+}
