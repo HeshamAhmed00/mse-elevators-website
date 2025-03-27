@@ -102,7 +102,19 @@ body, html {
 .navbar-nav .nav-link:hover {
     color: #f39c12 !important;
 }
-
+[dir="rtl"] .navbar {
+    flex-direction: row-reverse; 
+  }
+  
+  [dir="rtl"] .navbar-toggler {
+    margin-right: auto !important; 
+    margin-left: 0 !important;
+  }
+  
+  [dir="rtl"] .navbar-brand {
+    margin-right: 0 !important;
+    margin-left: auto !important; 
+  }
 /* About Section */
 #about {
     background: #f9f9f9;
